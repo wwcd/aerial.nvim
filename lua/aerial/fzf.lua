@@ -1,4 +1,5 @@
 local backends = require("aerial.backends")
+local config = require("aerial.config")
 local data = require("aerial.data")
 local navigation = require("aerial.navigation")
 local M = {}
@@ -15,7 +16,7 @@ M.get_labels = function(opts)
   local results = {}
   if data.has_symbols(0) then
     for _, item in data.get_or_create(0):iter({ skip_hidden = false }) do
-      local label = string.format("%d: %s", item.idx, item.name)
+      local label = string.format("%d %s %s", item.idx, config.get_icon(0, item.kind), item.name)
       table.insert(results, label)
     end
   end
