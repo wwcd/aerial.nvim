@@ -196,7 +196,7 @@ M.on_publish_diagnostics = function(_err, result, ctx, _config)
     return
   end
   local uri = result.uri
-  local bufnr = vim.uri_to_bufnr(uri)
+  local bufnr = vim.uri.to_buf(uri)
   if
     not bufnr
     or not backends.is_backend_attached(bufnr, "lsp")
